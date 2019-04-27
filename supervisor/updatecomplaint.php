@@ -1,24 +1,56 @@
 <?php
 session_start();
-include('include/config.php');
-if(strlen($_SESSION['slogin'])==0)
-  {
-header('location:index.php');
-}
-else {
-  if(isset($_POST['update']))
-  {
-$complaintnumber=$_GET['cid'];
-$status=$_POST['status'];
-$remark=$_POST['remark'];
-$query=mysqli_query($con,"insert into complaintremark(complaintNumber,status,remark) values('$complaintnumber','$status','$remark')");
-$sql=mysqli_query($con,"update tblcomplaints set status='$status' where complaintNumber='$complaintnumber'");
+include 'include/config.php';
+if (strlen($_SESSION['slogin']) == 0) {
+    header('location:index.php');
+} else {
+    if (isset($_POST['update'])) {
+        $complaintnumber = $_GET['cid'];
+        $status = $_POST['status'];
+        $remark = $_POST['remark'];
+        $query = mysqli_query($con, "insert into complaintremark(complaintNumber,status,remark) values('$complaintnumber','$status','$remark')");
+        $sql = mysqli_query($con, "update tblcomplaints set status='$status' where complaintNumber='$complaintnumber'");
+        $selrow = mysqli_query($con, "select * from tblcomplaints where complaintnumber = '$complaintnumber'");
+        $val = mysqli_fetch_array($selrow);
+        $category = $val['category'];
+        $subcategory = $val['subcategory'];
+        if ($status == 2) {
+            $fetchreqworkers = mysqli_query($con, "SELECT * from subcategory,category WHERE subcategory.categoryid = category.id and categoryid='$category' and subcategory='$subcategory'");
+            $reqworkersarr = mysqli_fetch_array($fetchreqworkers);
+            $reqworker = $reqworkersarr['ReqWorkers'];
+            $remworkers = $reqworkersarr['RemWorkers'];
+            if ($reqworker <= $remworkers) {
+                $remworkers = $remworkers - $reqworker;
+                $sql = mysqli_query($con, "update tblcomplaints set status=3 where complaintNumber='$complaintnumber'");
+                $updcategory = mysqli_query($con, "update category set RemWorkers = '$remworkers' where id = '$category'");
+            }
+        } else if ($status == 5) {
+            $fetchreqworkers = mysqli_query($con, "SELECT * from subcategory,category WHERE subcategory.categoryid = category.id and categoryid='$category' and subcategory='$subcategory'");
+            $reqworkersarr = mysqli_fetch_array($fetchreqworkers);
+            $reqworker = $reqworkersarr['ReqWorkers'];
+            $remworkers = $reqworkersarr['RemWorkers'];
+            $remworkers += $reqworker;
 
-echo "<script>alert('Complaint details updated successfully');</script>";
+            // Now assign workers to approved complaints
+            $fetchcomplaints = mysqli_query($con, "select * from tblcomplaints,subcategory where tblcomplaints.subcategory = subcategory.subcategory and status=2 and category = '$category' order by regDate asc");
+            while ($complaint = mysqli_fetch_array($fetchcomplaints)) {
+                $reqworker = $complaint['ReqWorkers'];
+                if ($reqworker <= $remworkers) {
+                    $remworkers -= $reqworker;
+                    $complaintnumber = $complaint['complaintNumber'];
+                    $sql = mysqli_query($con, "update tblcomplaints set status=3 where complaintNumber='$complaintnumber'");
+                } else {
+                    break;
+                }
+            }
+            $updcategory = mysqli_query($con, "update category set RemWorkers = '$remworkers' where id = '$category'");
+        }
 
-  }
+        echo "<script>alert('Complaint details updated successfully');</script>";
 
- ?>
+    }
+
+    ?>
 <script language="javascript" type="text/javascript">
 function f2()
 {
@@ -52,30 +84,28 @@ window.print();
     </tr>
 <?php
 $cid = $_GET['cid'];
-$quer=mysqli_query($con,"select status from tblcomplaints where complaintNumber='$cid'");
-while($row=mysqli_fetch_array($quer)){
-    if($row['status']==1){?>
+    $quer = mysqli_query($con, "select status from tblcomplaints where complaintNumber='$cid'");
+    while ($row = mysqli_fetch_array($quer)) {
+        if ($row['status'] == 1) {?>
     <tr height="50">
       <td><b>Status</b></td>
       <td><select name="status" required="required">
       <option value="">Select Status</option>
-      <option value="2">Assign Workers</option>
+      <option value="2">Accept Complaint</option>
       <option value="6">Close Complaint</option>
       </select></td>
     </tr>
-  <?php } elseif($row['status']==4){ ?>
+  <?php } elseif ($row['status'] == 4) {?>
     <tr height="50">
       <td><b>Status</b></td>
       <td><select name="status" required="required">
       <option value="">Select Status</option>
-      <option value="5">Start Job</option>
-      <option value="6">Close Complaint</option>
+      <option value="5">Completed</option>
       </select></td>
     </tr>
-<?php  }
+<?php }
 
-
-}?>
+    }?>
 
       <tr height="50">
       <td><b>Remark</b></td>
@@ -108,4 +138,4 @@ while($row=mysqli_fetch_array($quer)){
 </body>
 </html>
 
-     <?php } ?>
+     <?php }?>

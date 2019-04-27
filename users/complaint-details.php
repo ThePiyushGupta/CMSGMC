@@ -85,7 +85,45 @@ $ret = mysqli_query($con, "select complaintremark.remark as remark,complaintrema
 if ($row['status'] == "NULL" || $row['status'] == "") {
             echo "Not Process yet";
         } else {
-            echo htmlentities($row['status']);
+            $statusval = $row['status'];
+            $val = "undefined";
+            switch ($statusval) {
+                case '0':$val = "Under Approval";
+                    break;
+                case '1':$val = "Approved By Engineer";
+                    break;
+
+                case '2':{
+
+                        $complaintNumber = $_GET['cid'];
+                        $cat1 = $row['category'];
+                        $posquery = mysqli_query($con, "Select * from tblcomplaints where category = '$cat1' and status=2");
+                        $pos = 1;
+                        while ($asdf = mysqli_fetch_array($posquery)) {
+                            if ($asdf['complaintNumber'] == $complaintNumber) {
+                                break;
+                            } else {
+                                $pos++;
+                            }
+                        }
+
+                        $val = "In Queue:" . $pos;
+
+                    }
+                    break;
+                case '3':$val = "Work in Progress";
+                    break;
+
+                case '4':$val = "Under Inspection";
+                    break;
+                case '5':$val = "Completed";
+                    break;
+
+                case '6':$val = "Rejected";
+                    break;
+            }
+
+            echo htmlentities($val);
         }
         ?></p>
 						</div>

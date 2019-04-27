@@ -1,24 +1,21 @@
 <?php
 session_start();
-include('include/config.php');
-if(strlen($_SESSION['alogin'])==0)
-  {
-header('location:index.php');
-}
-else {
-  if(isset($_POST['update']))
-  {
-$complaintnumber=$_GET['cid'];
-$status=$_POST['status'];
-$remark=$_POST['remark'];
-$query=mysqli_query($con,"insert into complaintremark(complaintNumber,status,remark) values('$complaintnumber','$status','$remark')");
-$sql=mysqli_query($con,"update tblcomplaints set status='$status' where complaintNumber='$complaintnumber'");
+include 'include/config.php';
+if (strlen($_SESSION['alogin']) == 0) {
+    header('location:index.php');
+} else {
+    if (isset($_POST['update'])) {
+        $complaintnumber = $_GET['cid'];
+        $status = $_POST['status'];
+        $remark = $_POST['remark'];
+        $query = mysqli_query($con, "insert into complaintremark(complaintNumber,status,remark) values('$complaintnumber','$status','$remark')");
+        $sql = mysqli_query($con, "update tblcomplaints set status='$status' where complaintNumber='$complaintnumber'");
 
-echo "<script>alert('Complaint details updated successfully');</script>";
+        echo "<script>alert('Complaint details updated successfully');</script>";
 
-  }
+    }
 
- ?>
+    ?>
 <script language="javascript" type="text/javascript">
 function f2()
 {
@@ -52,9 +49,9 @@ window.print();
     </tr>
 <?php
 $cid = $_GET['cid'];
-$quer=mysqli_query($con,"select status from tblcomplaints where complaintNumber='$cid'");
-while($row=mysqli_fetch_array($quer)){
-    if($row['status']==0){?>
+    $quer = mysqli_query($con, "select status from tblcomplaints where complaintNumber='$cid'");
+    while ($row = mysqli_fetch_array($quer)) {
+        if ($row['status'] == 0) {?>
     <tr height="50">
       <td><b>Status</b></td>
       <td><select name="status" required="required">
@@ -63,19 +60,17 @@ while($row=mysqli_fetch_array($quer)){
       <option value="6">Close Complaint</option>
       </select></td>
     </tr>
-  <?php } elseif($row['status']==3){ ?>
+  <?php } elseif ($row['status'] == 3) {?>
     <tr height="50">
       <td><b>Status</b></td>
       <td><select name="status" required="required">
       <option value="">Select Status</option>
-      <option value="4">Start Work</option>
-      <option value="6">Close Complaint</option>
+      <option value="4">Approve Completion</option>
       </select></td>
     </tr>
-<?php  }
+<?php }
 
-
-}?>
+    }?>
 
       <tr height="50">
       <td><b>Remark</b></td>
@@ -108,4 +103,4 @@ while($row=mysqli_fetch_array($quer)){
 </body>
 </html>
 
-     <?php } ?>
+     <?php }?>

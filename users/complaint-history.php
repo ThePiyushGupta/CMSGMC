@@ -52,8 +52,7 @@ if (strlen($_SESSION['login']) == 0) {
                               <thead>
                               <tr>
                                   <th>Complaint Number</th>
-                                  <th>Reg Date</th>
-                                  <th>last Updation date</th>
+                                  <th>Reg Time</th>
                                   <th >Status</th>
                                   <th>Action</th>
 
@@ -66,21 +65,20 @@ if (strlen($_SESSION['login']) == 0) {
                               <tr>
                                   <td align="center"><?php echo htmlentities($row['complaintNumber']); ?></td>
                                   <td align="center"><?php echo htmlentities($row['regDate']); ?></td>
-                                 <td align="center"><?php echo htmlentities($row['lastUpdationDate']);
-
-        ?></td>
                                   <td align="center"><?php
 $status = $row['status'];
         if ($status == 0 or $status == 1) {?>
-                                      <button type="button" class="btn btn-theme04">Complaint Not Approved</button>
+                                      <button type="button" class="btn btn-theme04">Under Approval</button>
                                    <?php }
         if ($status == 2 or $status == 3) {?>
                                             <button type="button" class="btn btn-warning">In Process</button>
                                             <?php }
         if ($status == 4 or $status == 5) {
             ?>
-<button type="button" class="btn btn-success">Closed</button>
-<?php }?>
+<button type="button" class="btn btn-success">Resolved</button>
+        <?php } else if ($status == 6) {?>
+            <button type="button" class="btn btn-theme04">Complaint Rejected</button>
+        <?php }?>
                                    <td align="center">
                                    <a href="complaint-details.php?cid=<?php echo htmlentities($row['complaintNumber']); ?>">
 <button type="button" class="btn btn-primary">View Details</button></a>
