@@ -3,7 +3,7 @@
 session_start();
 include('include/config.php');
 if(strlen($_SESSION['alogin'])==0)
-	{	
+	{
 header('location:index.php');
 }
 else{
@@ -42,7 +42,7 @@ popUpWin = open(URLStr,'popUpWin', 'toolbar=no,location=no,directories=no,status
 	<div class="wrapper">
 		<div class="container">
 			<div class="row">
-<?php include('include/sidebar.php');?>				
+<?php include('include/sidebar.php');?>
 			<div class="span9">
 					<div class="content">
 
@@ -53,7 +53,7 @@ popUpWin = open(URLStr,'popUpWin', 'toolbar=no,location=no,directories=no,status
 							<div class="module-body table">
 
 
-							
+
 								<table cellpadding="0" cellspacing="0" border="0" class="datatable-1 table table-bordered table-striped	 display" >
 									<thead>
 										<tr>
@@ -61,28 +61,28 @@ popUpWin = open(URLStr,'popUpWin', 'toolbar=no,location=no,directories=no,status
 											<th> complainant Name</th>
 											<th>Reg Date</th>
 											<th>Status</th>
-											
+
 											<th>Action</th>
-											
-										
+
+
 										</tr>
 									</thead>
-								
+
 <tbody>
-<?php 
+<?php
 $st='closed';
-$query=mysqli_query($con,"select tblcomplaints.*,users.fullName as name from tblcomplaints join users on users.id=tblcomplaints.userId where tblcomplaints.status='$st'");
+$query=mysqli_query($con,"select tblcomplaints.*,users.fullName as name from tblcomplaints join users on users.id=tblcomplaints.userId where tblcomplaints.status='6'");
 while($row=mysqli_fetch_array($query))
 {
-?>										
+?>
 										<tr>
 											<td><?php echo htmlentities($row['complaintNumber']);?></td>
 											<td><?php echo htmlentities($row['name']);?></td>
 											<td><?php echo htmlentities($row['regDate']);?></td>
-										
+
 											<td><button type="button" class="btn btn-success">Closed</button></td>
-											
-											<td>   <a href="complaint-details.php?cid=<?php echo htmlentities($row['complaintNumber']);?>"> View Details</a> 
+
+											<td>   <a href="complaint-details.php?cid=<?php echo htmlentities($row['complaintNumber']);?>"> View Details</a>
 											</td>
 											</tr>
 
@@ -90,10 +90,10 @@ while($row=mysqli_fetch_array($query))
 										</tbody>
 								</table>
 							</div>
-						</div>						
+						</div>
 
-						
-						
+
+
 					</div><!--/.content-->
 				</div><!--/.span9-->
 			</div>

@@ -3,7 +3,7 @@
 session_start();
 include('include/config.php');
 if(strlen($_SESSION['alogin'])==0)
-	{	
+	{
 header('location:index.php');
 }
 else{
@@ -41,11 +41,11 @@ popUpWin = open(URLStr,'popUpWin', 'toolbar=no,location=no,directories=no,status
 	<div class="wrapper">
 		<div class="container">
 			<div class="row">
-<?php include('include/sidebar.php');?>				
+<?php include('include/sidebar.php');?>
 			<div class="span9">
 					<div class="content">
 
-						
+
 
 
 	<div class="module">
@@ -54,7 +54,7 @@ popUpWin = open(URLStr,'popUpWin', 'toolbar=no,location=no,directories=no,status
 							</div>
 							<div class="module-body table">
 								<table cellpadding="0" cellspacing="0" border="0" class="datatable-1 table table-bordered table-striped	 display" width="100%">
-									
+
 									<tbody>
 
 <?php $st='closed';
@@ -62,15 +62,13 @@ $query=mysqli_query($con,"select tblcomplaints.*,users.fullName as name,category
 while($row=mysqli_fetch_array($query))
 {
 
-?>									
+?>
 										<tr>
 											<td><b>Complaint Number</b></td>
 											<td><?php echo htmlentities($row['complaintNumber']);?></td>
 											<td><b>Complainant Name</b></td>
 											<td> <?php echo htmlentities($row['name']);?></td>
 											<td><b>Reg Date</b></td>
-											<td><?php echo htmlentities($row['regDate']);?>
-											</td>
 										</tr>
 
 <tr>
@@ -78,28 +76,20 @@ while($row=mysqli_fetch_array($query))
 											<td><?php echo htmlentities($row['catname']);?></td>
 											<td><b>SubCategory</b></td>
 											<td> <?php echo htmlentities($row['subcategory']);?></td>
-											<td><b>Complaint Type</b></td>
-											<td><?php echo htmlentities($row['complaintType']);?>
+											<td><?php echo htmlentities($row['regDate']);?>
 											</td>
 										</tr>
 <tr>
-											<td><b>State </b></td>
-											<td><?php echo htmlentities($row['state']);?></td>
-											<td ><b>Nature of Complaint</b></td>
-											<td colspan="3"> <?php echo htmlentities($row['noc']);?></td>
-											
-										</tr>
-<tr>
 											<td><b>Complaint Details </b></td>
-											
+
 											<td colspan="5"> <?php echo htmlentities($row['complaintDetails']);?></td>
-											
+
 										</tr>
 
 											</tr>
 <tr>
 											<td><b>File(if any) </b></td>
-											
+
 											<td colspan="5"> <?php $cfile=$row['complaintFile'];
 if($cfile=="" || $cfile=="NULL")
 {
@@ -112,13 +102,13 @@ else{?>
 
 <tr>
 <td><b>Final Status</b></td>
-											
-											<td colspan="5"><?php if($row['status']=="")
+
+											<td colspan="5"><?php if($row['status']==0	)
 											{ echo "Not Process Yet";
 } else {
 										 echo htmlentities($row['status']);
 										 }?></td>
-											
+
 										</tr>
 
 <?php $ret=mysqli_query($con,"select complaintremark.remark as remark,complaintremark.status as sstatus,complaintremark.remarkDate as rdate from complaintremark join tblcomplaints on tblcomplaints.complaintNumber=complaintremark.complaintNumber where complaintremark.complaintNumber='".$_GET['cid']."'");
@@ -127,7 +117,8 @@ while($rw=mysqli_fetch_array($ret))
 ?>
 <tr>
 <td><b>Remark</b></td>
-<td colspan="5"><?php echo  htmlentities($rw['remark']); ?> <b>Remark Date :</b><?php echo  htmlentities($rw['rdate']); ?></td>
+<td colspan="3"><?php echo  htmlentities($rw['remark']); ?></td>
+<td>	<b>Remark Date :</b><?php echo  htmlentities($rw['rdate']); ?></td>
 </tr>
 
 <tr>
@@ -135,34 +126,28 @@ while($rw=mysqli_fetch_array($ret))
 <td colspan="5"><?php echo  htmlentities($rw['sstatus']); ?></td>
 </tr>
 <?php }?>
-
-
-
-
-
 <tr>
 											<td><b>Action</b></td>
-											
-											<td> 
-											<?php if($row['status']=="closed"){
 
-												} else {?>
-<a href="javascript:void(0);" onClick="popUpWindow('http://localhost/cms/admin/updatecomplaint.php?cid=<?php echo htmlentities($row['complaintNumber']);?>');" title="Update order">
-											 <button type="button" class="btn btn-primary">Take Action</button></td>
-											</a><?php } ?></td>
-											<td colspan="4"> 
-											<a href="javascript:void(0);" onClick="popUpWindow('http://localhost/cms/admin/userprofile.php?uid=<?php echo htmlentities($row['userId']);?>');" title="Update order">
-											 <button type="button" class="btn btn-primary">View User Detials</button></a></td>
-											
+											<td>
+											<?php if($row['status']==0 || $row['status']==3  ){?>
+												<a href="javascript:void(0);" onClick="popUpWindow('http://localhost/cms/admin/updatecomplaint.php?cid=<?php echo htmlentities($row['complaintNumber']);?>');" title="Update order">
+												 <button type="button" class="btn btn-primary">Take Action</button></td>
+												</a>
+											<?php }else {
+												 } ?>
+													</td>
+													<td colspan="4">
+													<a href="javascript:void(0);" onClick="popUpWindow('http://localhost/cms/admin/userprofile.php?uid=<?php echo htmlentities($row['userId']);?>');" title="Update order">
+											 		<button type="button" class="btn btn-primary">View User Detials</button></a></td>
 										</tr>
 										<?php  } ?>
-										
 								</table>
 							</div>
-						</div>						
+						</div>
 
-						
-						
+
+
 					</div><!--/.content-->
 				</div><!--/.span9-->
 			</div>

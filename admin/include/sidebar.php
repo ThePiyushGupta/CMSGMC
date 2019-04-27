@@ -11,9 +11,9 @@
 					<li>
 						<a href="notprocess-complaint.php">
 						<i class="icon-tasks"></i>
-						Not Process Yet Complaint
+					New Complaints
 						<?php
-							$rt = mysqli_query($con,"SELECT * FROM tblcomplaints where status is null");
+							$rt = mysqli_query($con,"SELECT * FROM tblcomplaints where status='0'");
 							$num1 = mysqli_num_rows($rt);
 							{?>
 						<b class="label orange pull-right"><?php echo htmlentities($num1); ?></b>
@@ -23,10 +23,10 @@
 					<li>
 						<a href="inprocess-complaint.php">
 						<i class="icon-tasks"></i>
-						Pending Complaint
-						<?php 
-							$status="in Process";                   
-							$rt = mysqli_query($con,"SELECT * FROM tblcomplaints where status='$status'");
+						Workers Assigned
+						<?php
+							$status="in Process";
+							$rt = mysqli_query($con,"SELECT * FROM tblcomplaints where status='3'");
 							$num1 = mysqli_num_rows($rt);
 							{?><b class="label orange pull-right"><?php echo htmlentities($num1); ?></b>
 						<?php } ?>
@@ -36,9 +36,9 @@
 						<a href="closed-complaint.php">
 						<i class="icon-inbox"></i>
 						Closed Complaints
-						<?php 
-							$status="closed";                   
-							$rt = mysqli_query($con,"SELECT * FROM tblcomplaints where status='$status'");
+						<?php
+							$status="closed";
+							$rt = mysqli_query($con,"SELECT * FROM tblcomplaints where status='6'");
 							$num1 = mysqli_num_rows($rt);
 							{?><b class="label green pull-right"><?php echo htmlentities($num1); ?></b>
 						<?php } ?>
