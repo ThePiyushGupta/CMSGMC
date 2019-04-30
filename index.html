@@ -10,46 +10,45 @@
     <meta name="author" content="">
 
     <title>Complaint Management System</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/half-slider.css" rel="stylesheet">
 </head>
 
 <body>
 
+  <!-- Image and text -->
     <!-- Navigation -->
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">Complaint Management Sysytem</a>
-            </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li>
-                        <a href="http://localhost/cms/users/">User Login</a>
-                    </li>
-                    <li>
-                        <a href="http://localhost/cms/users/registration.php">User Registration</a>
-                    </li>
-                    <li>
-                        <a href="http://localhost/cms/admin/">Engineer</a>
-                    </li>
-                    <li>
-                        <a href="http://localhost/cms/supervisor/">Supervisor</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
+    <nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark ">
+      <a class="navbar-brand py-0" href="http://localhost/cms/index.html">
+        <img src="http://localhost/cms/img/logo.jpg" width="50" height="50" class="d-inline-block align-center" alt="">
+          <span><b>Guwahati Municipal Corporation</b></span>
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse text-white" id="navbarNav">
+        <ul class="nav nav-pills justify-content-end">
+          <li class="nav-item">
+            <a class="nav-link active text-white" href="http://localhost/cms/index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="http://localhost/cms/users/">User Login</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link text-white" href="http://localhost/cms/users/registration.php">User Registration</a>
+          </li>
+          <li class="nav-item">
+          <a class="nav-link text-white" href="http://localhost/cms/admin/">Engineer Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="http://localhost/cms/supervisor/">Supervisor Login</a>
+          </li>
+        </ul>
+      </div>
     </nav>
+
+
 
     <!-- Half Page Image Background Carousel Header -->
     <header id="myCarousel" class="carousel slide">
@@ -90,11 +89,12 @@
     </header>
 
     <!-- Page Content -->
+    <br>
     <div class="container">
 
         <div class="row">
-            <div class="col-lg-12">
-                <h1>Complaint Management System</h1>
+            <div class="col-lg-12 ">
+                <h1 class="text-center">GMC Complaint Management System</h1>
 
             </div>
         </div>
@@ -102,13 +102,14 @@
         <hr>
 
         <!-- Footer -->
-        <footer>
-            <div class="row">
-                <div class="col-lg-12">
-                    <p>Copyright &copy; Guwahati Municipal Corporation Complaint Management System 2017</p>
-                </div>
-            </div>
-            <!-- /.row -->
+        <footer class="page-footer font-small blue fixed-bottom">
+
+          <!-- Copyright -->
+          <div class="footer-copyright text-center">
+            <p>&copy; 2019 Copyright : <b>Guwahati Municipal Corporation</b></p>
+          </div>
+          <!-- Copyright -->
+
         </footer>
 
     </div>

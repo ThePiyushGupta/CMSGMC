@@ -36,43 +36,44 @@ exit();
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>CMS | Admin login</title>
-	<link type="text/css" href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 	<link type="text/css" href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
 	<link type="text/css" href="css/theme.css" rel="stylesheet">
 	<link type="text/css" href="images/icons/css/font-awesome.css" rel="stylesheet">
 	<link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600' rel='stylesheet'>
+	<link type="text/css" href="css/bootstrap.min.css" rel="stylesheet">
+	<link type="text/css" href="css/half-slider.css" rel="stylesheet">
 </head>
 <body>
 
-	<div class="navbar navbar-fixed-top">
-		<div class="navbar-inner">
-			<div class="container">
-				<a class="btn btn-navbar" data-toggle="collapse" data-target=".navbar-inverse-collapse">
-					<i class="icon-reorder shaded"></i>
-				</a>
-
-			  	<a class="brand" href="index.html">
-			  		CMS | Admin
-			  	</a>
-
-				<div class="nav-collapse collapse navbar-inverse-collapse">
-
-					<ul class="nav pull-right">
-
-						<li><a href="http://localhost/cms/">
-						Back to Portal
-
-						</a></li>
-
-
-
-
-					</ul>
-				</div><!-- /.nav-collapse -->
-			</div>
-		</div><!-- /navbar-inner -->
-	</div><!-- /navbar -->
-
+	<nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark ">
+		<a class="navbar-brand py-0  text-white" href="http://localhost/cms/index.html">
+			<img src="http://localhost/cms/img/logo.jpg" width="50" height="50" class="d-inline-block align-center" alt="">
+				<span><b>Guwahati Municipal Corporation</b></span>
+		</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse text-white" id="navbarNav">
+			<ul class="nav nav-pills justify-content-end">
+				<li class="nav-item">
+					<a class="nav-link text-white" href="http://localhost/cms/index.html">Home</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link text-white" href="http://localhost/cms/users/">User Login</a>
+				</li>
+				<li class="nav-item">
+						<a class="nav-link text-white" href="http://localhost/cms/users/registration.php">User Registration</a>
+				</li>
+				<li class="nav-item">
+				<a class="nav-link text-white" href="http://localhost/cms/admin/">Engineer Login</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link text-white active" href="http://localhost/cms/supervisor/">Supervisor Login</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
 
 
 	<div class="wrapper">
@@ -110,13 +111,15 @@ exit();
 		</div>
 	</div><!--/.wrapper-->
 
-	<div class="footer">
-		<div class="container">
+	<footer class="page-footer font-small blue fixed-bottom">
 
-
-			<b class="copyright">&copy; 2017 CMS </b> All rights reserved.
+		<!-- Copyright -->
+		<div class="footer-copyright text-center">
+			<p>&copy; 2019 Copyright : <b>Guwahati Municipal Corporation</b></p>
 		</div>
-	</div>
+		<!-- Copyright -->
+
+	</footer>
 	<script src="scripts/jquery-1.9.1.min.js" type="text/javascript"></script>
 	<script src="scripts/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
 	<script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>

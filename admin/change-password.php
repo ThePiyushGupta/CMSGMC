@@ -3,7 +3,7 @@
 session_start();
 include('include/config.php');
 if(strlen($_SESSION['alogin'])==0)
-	{	
+	{
 header('location:index.php');
 }
 else{
@@ -35,6 +35,7 @@ $_SESSION['msg']="Old Password not match !!";
 	<link type="text/css" href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	<link type="text/css" href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
 	<link type="text/css" href="css/theme.css" rel="stylesheet">
+	<link type="text/css" href="css/navbar.css" rel="stylesheet">
 	<link type="text/css" href="images/icons/css/font-awesome.css" rel="stylesheet">
 	<link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600' rel='stylesheet'>
 	<script type="text/javascript">
@@ -74,7 +75,7 @@ return true;
 	<div class="wrapper">
 		<div class="container">
 			<div class="row">
-<?php include('include/sidebar.php');?>				
+<?php include('include/sidebar.php');?>
 			<div class="span9">
 					<div class="content">
 
@@ -94,7 +95,7 @@ return true;
 									<br />
 
 			<form class="form-horizontal row-fluid" name="chngpwd" method="post" onSubmit="return valid();">
-									
+
 <div class="control-group">
 <label class="control-label" for="basicinput">Current Password</label>
 <div class="controls">
@@ -120,7 +121,7 @@ return true;
 
 
 
-										
+
 
 										<div class="control-group">
 											<div class="controls">
@@ -131,8 +132,8 @@ return true;
 							</div>
 						</div>
 
-						
-						
+
+
 					</div><!--/.content-->
 				</div><!--/.span9-->
 			</div>
