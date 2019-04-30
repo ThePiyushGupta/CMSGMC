@@ -46,7 +46,7 @@ if (strlen($_SESSION['login']) == 0) {
                      <div class="box1">
                         <span class="li_news"></span>
                         <?php
-$rt = mysqli_query($con, "SELECT * FROM tblcomplaints where userId='" . $_SESSION['id'] . "' and status in (0,1)");
+$rt = mysqli_query($con, "SELECT * FROM tblcomplaints where userId='" . $_SESSION['id'] . "' and status =0");
     $num1 = mysqli_num_rows($rt);
     {?>
                         <h3><?php echo htmlentities($num1); ?></h3>
@@ -58,7 +58,7 @@ $rt = mysqli_query($con, "SELECT * FROM tblcomplaints where userId='" . $_SESSIO
                      <div class="box1">
                         <span class="li_news"></span>
                         <?php
-$rt = mysqli_query($con, "SELECT * FROM tblcomplaints where userId='" . $_SESSION['id'] . "' and  status in (2,3)");
+$rt = mysqli_query($con, "SELECT * FROM tblcomplaints where userId='" . $_SESSION['id'] . "' and  status in (1,4)");
     $num1 = mysqli_num_rows($rt);
     {?>
                         <h3><?php echo htmlentities($num1); ?></h3>
@@ -70,7 +70,7 @@ $rt = mysqli_query($con, "SELECT * FROM tblcomplaints where userId='" . $_SESSIO
                      <div class="box1">
                         <span class="li_news"></span>
                         <?php
-$rt = mysqli_query($con, "SELECT * FROM tblcomplaints where userId='" . $_SESSION['id'] . "' and  status in (4,5)");
+$rt = mysqli_query($con, "SELECT * FROM tblcomplaints where userId='" . $_SESSION['id'] . "' and  status in (5,6)");
     $num1 = mysqli_num_rows($rt);
     {?>
                         <h3><?php echo htmlentities($num1); ?></h3>
@@ -82,8 +82,9 @@ $rt = mysqli_query($con, "SELECT * FROM tblcomplaints where userId='" . $_SESSIO
                <!-- /row mt -->
             </section>
          </section>
+          <?php include "includes/footer.php";?>
       </section>
-         <?php include "includes/footer.php";?>
+
       <!-- js placed at the end of the document so the pages load faster -->
       <script src="assets/js/jquery.js"></script>
       <script src="assets/js/jquery-1.8.3.min.js"></script>

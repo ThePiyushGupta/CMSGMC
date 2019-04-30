@@ -18,9 +18,6 @@ if (isset($_POST['submit'])) {
         exit();
     } else {
         $_SESSION['login'] = $_POST['username'];
-        $uip = $_SERVER['REMOTE_ADDR'];
-        $status = 0;
-        mysqli_query($con, "insert into userlog(username,userip,status) values('" . $_SESSION['login'] . "','$uip','$status')");
         $errormsg = "Invalid username or password";
         $extra = "login.php";
 
