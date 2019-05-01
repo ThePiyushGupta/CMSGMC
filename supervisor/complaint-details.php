@@ -15,7 +15,7 @@ else{
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Admin| Complaint Details</title>
+	<title>Supervisor| Complaint Details</title>
 	<link type="text/css" href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	<link type="text/css" href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
 	<link type="text/css" href="css/theme.css" rel="stylesheet">
@@ -100,7 +100,6 @@ else{?>
 <a href="../users/complaintdocs/<?php echo htmlentities($row['complaintFile']);?>" target="_blank"/> View File</a>
 <?php } ?></td>
 </tr>
-
 <tr>
 <td><b>Final Status</b></td>
 
@@ -127,14 +126,29 @@ while($rw=mysqli_fetch_array($ret))
 <td colspan="5"><?php echo  htmlentities($rw['sstatus']); ?></td>
 </tr>
 <?php }?>
+
+<?php $cid=$row['complaintNumber'];
+$quer = mysqli_query($con, "select certificate from tblcomplaints where complaintNumber='$cid'");
+		while ($rw = mysqli_fetch_array($quer)) {
+			if($rw['certificate']!=""){?>
+					<tr>
+						<td><b>Certificate Number</b></td>
+						<td colspan="5"><?php echo $rw['certificate']; ?></td>
+					</tr>
+		<?php }
+	} ?>
 <tr>
 											<td><b>Action</b></td>
 
 											<td>
-											<?php if($row['status']==1 || $row['status']==4  ){?>
+											<?php if($row['status']==1){?>
 												<a href="javascript:void(0);" onClick="popUpWindow('http://localhost/cms/supervisor/updatecomplaint.php?cid=<?php echo htmlentities($row['complaintNumber']);?>');" title="Update order">
 												 <button type="button" class="btn btn-primary">Take Action</button></td>
 												</a>
+											<?php } elseif($row['status']==4){?>
+													<a href="javascript:void(0);" onClick="popUpWindow('http://localhost/cms/supervisor/generate-certificate.php?cid=<?php echo htmlentities($row['complaintNumber']);?>');" title="Update order">
+													 <button type="button" class="btn btn-primary">Approve Certificate</button></td>
+													</a>
 											<?php }else {
 												 } ?>
 													</td>

@@ -23,12 +23,22 @@
 					<li>
 						<a href="inprocess-complaint.php">
 						<i class="icon-tasks"></i>
-						Final Work Approval Pending
+						Approve Certificate
 						<?php
-							$status="in Process";
 							$rt = mysqli_query($con,"SELECT * FROM tblcomplaints where status='4'");
 							$num1 = mysqli_num_rows($rt);
 							{?><b class="label orange pull-right"><?php echo htmlentities($num1); ?></b>
+						<?php } ?>
+						</a>
+					</li>
+					<li>
+						<a href="resolved-complaint.php">
+						<i class="icon-inbox"></i>
+						Resolved Complaints
+						<?php
+							$rt = mysqli_query($con,"SELECT * FROM tblcomplaints where status='5'");
+							$num1 = mysqli_num_rows($rt);
+							{?><b class="label green pull-right"><?php echo htmlentities($num1); ?></b>
 						<?php } ?>
 						</a>
 					</li>
@@ -37,7 +47,6 @@
 						<i class="icon-inbox"></i>
 						Closed Complaints
 						<?php
-							$status="closed";
 							$rt = mysqli_query($con,"SELECT * FROM tblcomplaints where status='6'");
 							$num1 = mysqli_num_rows($rt);
 							{?><b class="label green pull-right"><?php echo htmlentities($num1); ?></b>

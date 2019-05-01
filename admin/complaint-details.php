@@ -127,14 +127,29 @@ while($rw=mysqli_fetch_array($ret))
 <td colspan="5"><?php echo  htmlentities($rw['sstatus']); ?></td>
 </tr>
 <?php }?>
+
+<?php $cid=$row['complaintNumber'];
+$quer = mysqli_query($con, "select certificate from tblcomplaints where complaintNumber='$cid'");
+		while ($rw = mysqli_fetch_array($quer)) {
+			if($rw['certificate']!=""){?>
+					<tr>
+						<td><b>Certificate Number</b></td>
+						<td colspan="5"><?php echo $rw['certificate']; ?></td>
+					</tr>
+		<?php }
+	} ?>
 <tr>
 											<td><b>Action</b></td>
 
 											<td>
-											<?php if($row['status']==0 || $row['status']==3  ){?>
+											<?php if($row['status']==0  ){?>
 												<a href="javascript:void(0);" onClick="popUpWindow('http://localhost/cms/admin/updatecomplaint.php?cid=<?php echo htmlentities($row['complaintNumber']);?>');" title="Update order">
 												 <button type="button" class="btn btn-primary">Take Action</button></td>
 												</a>
+											<?php }elseif($row['status']==3  ){?>
+													<a href="javascript:void(0);" onClick="popUpWindow('http://localhost/cms/admin/generate-certificate.php?cid=<?php echo htmlentities($row['complaintNumber']);?>');" title="Update order">
+													 <button type="button" class="btn btn-primary">Generate Certificate</button></td>
+													</a>
 											<?php }else {
 												 } ?>
 													</td>

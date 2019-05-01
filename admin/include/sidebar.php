@@ -23,7 +23,7 @@
 					<li>
 						<a href="inprocess-complaint.php">
 						<i class="icon-tasks"></i>
-						Workers Assigned
+						Generate Certificate
 						<?php
 							$rt = mysqli_query($con,"SELECT * FROM tblcomplaints where status='3'");
 							$num1 = mysqli_num_rows($rt);
