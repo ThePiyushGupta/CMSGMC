@@ -1,13 +1,11 @@
 <?php
 session_start();
-include('include/config.php');
-if(strlen($_SESSION['slogin'])==0)
-  {
-header('location:index.php');
-}
-else{
+include 'include/config.php';
+if (strlen($_SESSION['slogin']) == 0) {
+    header('location:index.php');
+} else {
 
- ?>
+    ?>
 <script language="javascript" type="text/javascript">
 function f2()
 {
@@ -33,16 +31,15 @@ window.print();
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
 <?php
 
-$ret1=mysqli_query($con,"select * FROM users where id='".$_GET['uid']."'");
-while($row=mysqli_fetch_array($ret1))
-{
-?>
+    $ret1 = mysqli_query($con, "select * FROM users where id='" . $_GET['uid'] . "'");
+    while ($row = mysqli_fetch_array($ret1)) {
+        ?>
 
 
 
 
     <tr>
-      <td colspan="2"><b><?php echo $row['fullName'];?>'s profile</b></td>
+      <td colspan="2"><b><?php echo $row['fullName']; ?>'s profile</b></td>
 
     </tr>
 
@@ -66,27 +63,6 @@ while($row=mysqli_fetch_array($ret1))
       <td><?php echo htmlentities($row['contactNo']); ?></td>
     </tr>
 
-
-
-        <tr height="50">
-      <td><b>Address:</b></td>
-      <td><?php echo htmlentities($row['address']); ?></td>
-    </tr>
-
-
-
-        <tr height="50">
-      <td><b>State:</b></td>
-      <td><?php echo htmlentities($row['State']); ?></td>
-    </tr>
-
-
-        <tr height="50">
-      <td><b>Country:</b></td>
-      <td><?php echo htmlentities($row['country']); ?></td>
-    </tr>
-
-
         <tr height="50">
       <td><b>Pincode:</b></td>
       <td><?php echo htmlentities($row['pincode']); ?></td>
@@ -99,11 +75,10 @@ while($row=mysqli_fetch_array($ret1))
     </tr>
      <tr height="50">
       <td><b>Status:</b></td>
-      <td><?php if($row['status']==1)
-      { echo "Active";
-} else{
-  echo "Block";
-}
+      <td><?php if ($row['status'] == 1) {echo "Active";
+        } else {
+            echo "Block";
+        }
         ?></td>
     </tr>
 
@@ -115,7 +90,6 @@ while($row=mysqli_fetch_array($ret1))
 
     <?php }
 
-
     ?>
 
 </table>
@@ -125,4 +99,4 @@ while($row=mysqli_fetch_array($ret1))
 </body>
 </html>
 
-     <?php } ?>
+     <?php }?>
