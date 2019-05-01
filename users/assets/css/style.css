@@ -48,6 +48,8 @@ a:focus {
     width: 100%;
     height: 100% !important;
     min-height: 100vh;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
 }
 
 html {
@@ -2444,6 +2446,7 @@ label {
     color: #fff;
     padding: 10px 0;
     bottom: 0px;
+    margin-bottom: -20px;
 }
 
 .go-top {
