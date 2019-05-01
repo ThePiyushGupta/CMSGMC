@@ -72,16 +72,16 @@ html {
 }
 
 .accordion-heading .accordion-toggle {
-    display: block;
-    cursor: pointer;
-    border-top: 1px solid #F5F5F5;
-    padding: 5px 0px;
-    line-height: 28.75px;
-    text-transform: uppercase;
-    color: #1a1a1a;
-    background-color: #ffffff;
-    outline: none !important;
-    text-decoration: none;
+	display: block;
+	cursor: pointer;
+	border-top: 1px solid #F5F5F5;
+	padding: 5px 0px;
+	line-height: 28.75px;
+	text-transform: uppercase;
+	color: #1a1a1a;
+	background-color: #ffffff;
+	outline: none !important;
+	text-decoration: none;
 }
 
 
@@ -923,11 +923,7 @@ ul.top-menu>li>a:focus {
 .border-head h3 {
     margin-top: 20px;
     margin-bottom: 20px;
-<<<<<<< HEAD
-	margin-left: 15px;
-=======
-    margin-left: 15px;
->>>>>>> e77cad454f47ae7c25d73b3b1fceca0bd602b369
+  	margin-left: 15px;
     padding-bottom: 5px;
     font-weight: normal;
     font-size: 18px;
@@ -1037,12 +1033,7 @@ PANELS CONFIGURATIONS
 }
 
 .pn:hover {
-<<<<<<< HEAD
 	box-shadow: 2px 3px 2px rgba(0, 0, 0, 0.3);
-
-=======
-    box-shadow: 2px 3px 2px rgba(0, 0, 0, 0.3);
->>>>>>> e77cad454f47ae7c25d73b3b1fceca0bd602b369
 }
 
 
@@ -1112,15 +1103,9 @@ PANELS CONFIGURATIONS
 }
 
 .darkblue-panel footer h5 {
-<<<<<<< HEAD
 	margin-left:10px;
 	margin-right: 10px;
 	font-weight: 700;
-=======
-    margin-left: 10px;
-    margin-right: 10px;
-    font-weight: 700;
->>>>>>> e77cad454f47ae7c25d73b3b1fceca0bd602b369
 }
 
 
@@ -1189,17 +1174,10 @@ PANELS CONFIGURATIONS
 /*STOCK CARD Panel*/
 
 .card {
-<<<<<<< HEAD
   background: white;
   box-shadow: 0 2px 1px rgba(0, 0, 0, 0.2);
   margin-bottom: 1em;
   height: 250px;
-=======
-    background: white;
-    box-shadow: 0 2px 1px rgba(0, 0, 0, 0.2);
-    margin-bottom: 1em;
-    height: 250px;
->>>>>>> e77cad454f47ae7c25d73b3b1fceca0bd602b369
 }
 
 .stock .stock-chart {
@@ -1210,16 +1188,10 @@ PANELS CONFIGURATIONS
     height: 10.7em;
     background: url(http://i.imgbox.com/abmuNQx2) center bottom no-repeat;
 }
-<<<<<<< HEAD
+
 .stock .current-price {
   background: #1d2122;
   padding: 10px;
-=======
-
-.stock .current-price {
-    background: #1d2122;
-    padding: 10px;
->>>>>>> e77cad454f47ae7c25d73b3b1fceca0bd602b369
 }
 
 .stock .current-price .info abbr {
@@ -1239,13 +1211,8 @@ PANELS CONFIGURATIONS
 }
 
 .stock .current-price .changes .value {
-<<<<<<< HEAD
-      font-size: 1.8em;
-      font-weight: 700;
-=======
     font-size: 1.8em;
     font-weight: 700;
->>>>>>> e77cad454f47ae7c25d73b3b1fceca0bd602b369
 }
 
 .stock .summary {
@@ -1889,7 +1856,6 @@ PANELS CONFIGURATIONS
 }
 
 .project .overlay {
-<<<<<<< HEAD
   position: absolute;
   text-align: center;
   color: #fff;
@@ -1899,18 +1865,6 @@ PANELS CONFIGURATIONS
   -moz-transition: opacity 0.4s;
   -o-transition: opacity 0.4s;
   transition: opacity 0.4s;
-
-=======
-    position: absolute;
-    text-align: center;
-    color: #fff;
-    opacity: 0;
-    filter: alpha(opacity=0);
-    -webkit-transition: opacity 0.4s;
-    -moz-transition: opacity 0.4s;
-    -o-transition: opacity 0.4s;
-    transition: opacity 0.4s;
->>>>>>> e77cad454f47ae7c25d73b3b1fceca0bd602b369
 }
 
 .project:hover .photo-wrapper {
@@ -2508,8 +2462,4 @@ label {
 
 .site-min-height {
     min-height: 900px;
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> e77cad454f47ae7c25d73b3b1fceca0bd602b369
